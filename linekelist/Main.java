@@ -11,6 +11,7 @@ public class Main {
 		list.removeLast();
 		list.removeFirst();
 		list.get(2);
+		list.set(1, 10);
 		list.getHead();
 		list.getTail();
 		list.getLength();

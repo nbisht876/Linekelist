@@ -137,7 +137,22 @@ public class Linekelist {
 		}
 		System.out.println("Value at index "+index+": "+temp.value);
 	}
-	public void removeNode(int value)
+
+	public void set(int index, int value)
+	{
+		if(index<0 || index>=length)
+		{
+			System.out.println("Index out of bounds");
+			return;
+		}
+		Node temp=head;
+		for(int i=0;i<index;i++)
+		{
+			temp=temp.next;
+		}
+		temp.value=value;
+		System.out.println("Value at index "+index+" set to: "+temp.value);
+		}	public void removeNode(int value)
 	{
 		if(head==null)
 		{
