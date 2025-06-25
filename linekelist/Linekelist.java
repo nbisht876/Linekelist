@@ -170,6 +170,35 @@ public class Linekelist {
 		return true;
 	}
 
+	public Node delete(int index)
+	{
+		if(index<0 || index>=length){
+			return null;
+		}
+		if(index==0)
+		{
+			removeFirst();
+			return head;
+		}
+		if(index==length-1)
+		{
+			removeLast();
+			return tail;
+			
+		}
+		Node prev=get(index-1);
+		if(prev==null || prev.next==null)
+		{
+			System.out.println("Index out of bounds");
+			return null;
+		}
+		Node temp=prev.next;
+		prev.next=temp.next;
+		temp.next=null;
+		length--;
+		return temp;
+	}
+
 	public void removeNode(int value)
 	{
 		if(head==null)

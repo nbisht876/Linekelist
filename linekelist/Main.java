@@ -14,6 +14,7 @@ public class Main {
 		list.set(1, 10);
 		list.insert(2,2);
 		list.insert(3,5);
+		list.delete(1);
 		list.getHead();
 		list.getTail();
 		list.getLength();
