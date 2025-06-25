@@ -19,6 +19,8 @@ public class Main {
 		list.getTail();
 		list.getLength();
 		list.printList();
+		list.reverse();
+		list.printList();
 
 	}
 }

@@ -169,7 +169,25 @@ public class Linekelist {
 		length++;
 		return true;
 	}
-
+	public void reverse()
+	{
+		if(head==null || head.next==null)
+		{
+			return;
+		}
+		Node prev=null;
+		Node current=head;
+		Node next=null;
+		tail=head; // Update tail to the current head
+		while(current!=null)
+		{
+			next=current.next;
+			current.next=prev;
+			prev=current;
+			current=next;
+		}
+		head=prev; // Update head to the last processed node
+	}
 	public Node delete(int index)
 	{
 		if(index<0 || index>=length){
