@@ -70,19 +70,14 @@ public class Linekelist {
 		tail=prev;
 		tail.next=null;
 		length--;
-		if(length==0)
-		{
-			head=null;
-			tail=null;
-		}
-		else if(length==1)
-		{
-			head=tail;
-		}
-		else
-		{
-			head=head;
-		}
+            switch (length) {
+                case 0 -> {
+                    head=null;
+                    tail=null;
+                }
+                case 1 -> head=tail;
+                default -> head=head;
+            }
 	}
 	public void prependNode(int value)
 	{
@@ -175,25 +170,7 @@ public class Linekelist {
 		return true;
 	}
 
-<<<<<<< HEAD
-	public void set(int index, int value)
-	{
-		if(index<0 || index>=length)
-		{
-			System.out.println("Index out of bounds");
-			return;
-		}
-		Node temp=head;
-		for(int i=0;i<index;i++)
-		{
-			temp=temp.next;
-		}
-		temp.value=value;
-		System.out.println("Value at index "+index+" set to: "+temp.value);
-		}	public void removeNode(int value)
-=======
 	public void removeNode(int value)
->>>>>>> secondCommit
 	{
 		if(head==null)
 		{
