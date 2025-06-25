@@ -1,6 +1,4 @@
 package Linekelist.linekelist;
-
-import java.util.LinkedList;
 public class Linekelist {
 	private Node head;
 	private Node tail;
@@ -123,12 +121,12 @@ public class Linekelist {
 		}
 	}
 
-	public void get(int index)
+	public Node get(int index)
 	{
 		if(index<0 || index>=length)
 		{
 			System.out.println("Index out of bounds");
-			return;
+			return null;
 		}
 		Node temp=head;
 		for(int i=0;i<index;i++)
@@ -136,6 +134,7 @@ public class Linekelist {
 			temp=temp.next;
 		}
 		System.out.println("Value at index "+index+": "+temp.value);
+		return temp;
 	}
 
 	public void set(int index, int value)

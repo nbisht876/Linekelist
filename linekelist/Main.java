@@ -13,6 +13,7 @@ public class Main {
 		list.get(2);
 		list.set(1, 10);
 		list.insert(2,2);
+		list.insert(3,5);
 		list.getHead();
 		list.getTail();
 		list.getLength();
