@@ -152,7 +152,31 @@ public class Linekelist {
 		}
 		temp.value=value;
 		System.out.println("Value at index "+index+" set to: "+temp.value);
-		}	public void removeNode(int value)
+		}	
+	
+	public boolean insert(int index, int value)
+	{
+		if(index<0 || index>length)
+		{
+			return false;
+		}
+		if(index==0)
+		{
+			prependNode(value);
+			return true;
+		}
+		if(index==length){
+			addNode(value);
+		}
+		Node newnode=new Node(value);
+		Node temp=get(index-1);
+		newnode.next=temp.next;
+		temp.next=newnode;
+		length++;
+		return true;
+	}
+
+	public void removeNode(int value)
 	{
 		if(head==null)
 		{
