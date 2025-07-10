@@ -216,7 +216,60 @@ public class Linekelist {
 		length--;
 		return temp;
 	}
-
+	public Node removeNthnodefromlast(int n)
+	{
+		if(n<1 || n>length)
+		{
+			System.out.println("Invalid value of n");
+			return null;
+		}
+		Node slow=head;
+		Node fast=head;
+		for(int i=0;i<n;i++)
+		{
+			fast=fast.next;
+		}
+		if(fast==null)
+		{
+			head=head.next;
+			length--;
+			if(length==0)
+			{
+				tail=null;
+			}
+			return head;
+		}
+		while(fast.next!=null)
+		{
+			slow=slow.next;
+			fast=fast.next;
+		}
+		Node toRemove=slow.next;
+		slow.next=toRemove.next;
+		toRemove.next=null;
+		if(slow.next==null)
+		{
+			tail=slow;
+		}
+		length--;
+		return toRemove;
+	}
+	public Node findMiddleNode()
+	{
+		if(head==null)
+		{
+			return null;
+		}
+		Node slow=head;
+		Node fast=head;
+		while(fast!=null && fast.next!=null)
+		{
+			slow=slow.next;
+			fast=fast.next.next;
+		}
+		System.out.println("Middle Node: "+slow.value);
+		return slow;
+	}
 	public void removeNode(int value)
 	{
 		if(head==null)
@@ -250,7 +303,83 @@ public class Linekelist {
 		}
 		length--;
 	}
+	
+	public Node findKthNodeFromEnd(int k)
+	{
+		if(k<1 || k>length)
+		{
+			System.out.println("Invalid value of k");
+			return null;
+		}
+		Node slow=head;
+		Node fast=head;
+		for(int i=0;i<k;i++)
+		{
+			fast=fast.next;
+		}
+		while(fast!=null)
+		{
+			slow=slow.next;
+			fast=fast.next;
+		}
+		System.out.println("Kth Node from end: "+slow.value);
+		return slow;
+	}
 
+	public Node sumofTwoList(Node temp1, Node temp2)
+	{
+		Node sum=new Node(0); // Dummy node to simplify the addition process
+		Node current=sum;
+		int carry=0;
+		while(temp1!=null || temp2!=null || carry>0)
+		{
+			int val1=(temp1!=null)?temp1.value:0;
+			int val2=(temp2!=null)?temp2.value:0;
+			int total=val1+val2+carry;
+			carry=total/10;
+			current.next=new Node(total%10);
+			current=current.next;	
+			if(temp1!=null) temp1=temp1.next;
+			if(temp2!=null) temp2=temp2.next;
+		}
+		return sum.next; // Return the next node to skip the initial dummy node
+	}
+
+	public void partition(int val)
+	{
+		Node l1=new Node(0);
+		Node l2=new Node(0);
+		Node l1Tail=l1;
+		Node l2Head=l2;
+		Node point=head;
+		while(point!=null)
+		{
+			if(point.value<val)
+			{
+				l1Tail.value=point.value;
+				l1Tail=l1Tail.next;
+			}
+			else
+			{
+				l2Head.value=point.value;
+				l2Head=l2Head.next;
+			}
+			point=point.next;
+		}
+		l1Tail.next=l2Head;
+		head=l1;
+	}
+	public void partitionList(int x)
+	{
+		Node partitionedList = partition(head, x);
+		head = partitionedList;
+		tail = head;
+		while (tail.next != null) {
+			tail = tail.next;
+		}
+		System.out.println("Partitioned List:");
+		printList();
+	}
 	public void getHead()
 	{
 		System.out.println("Head: "+head.value);
