@@ -380,6 +380,32 @@ public class Linekelist {
 		System.out.println("Partitioned List:");
 		printList();
 	}
+
+	public void reverseBetween(int left, int right)
+	{
+		if(left<1 || right>length || left>=right)
+		{
+			System.out.println("Invalid indices");
+			return;
+		}
+		Node dummy=new Node(0);
+		dummy.next=head;
+		Node prev=dummy;
+		for(int i=0;i<left-1;i++)
+		{
+			prev=prev.next;
+		}
+		Node current=prev.next;
+		Node next=null;
+		for(int i=0;i<right-left;i++)
+		{
+			next=current.next;
+			current.next=next.next;
+			next.next=prev.next;
+			prev.next=next;
+		}
+		head=dummy.next;
+	}
 	public void getHead()
 	{
 		System.out.println("Head: "+head.value);
