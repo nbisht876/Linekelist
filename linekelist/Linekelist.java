@@ -426,4 +426,9 @@ public class Linekelist {
 	{
 		System.out.println("Random Number: "+(int)(Math.random()*100));
 	}
+	public void random()
+	{
+		System.out.println("Random method called");
+		// Implement any random functionality here
+	}
 }
