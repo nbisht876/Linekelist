@@ -70,14 +70,10 @@ public class Linekelist {
 		tail=prev;
 		tail.next=null;
 		length--;
-            switch (length) {
-                case 0 -> {
-                    head=null;
-                    tail=null;
-                }
-                case 1 -> head=tail;
-                default -> head=head;
-            }
+		// If list size became 1 after removal, ensure head points to tail
+		if (length == 1) {
+			head = tail;
+		}
 	}
 	public void prependNode(int value)
 	{
